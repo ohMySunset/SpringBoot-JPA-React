@@ -1,0 +1,4 @@
+org/zerock/test/SeleniumTest.java
+ org.zerock.test.SeleniumTest
+org/zerock/test/SimpleTest.java
+ org.zerock.test.SimpleTest

@@ -18,3 +18,7 @@ crawling/build/test-results/test/TEST-org.zerock.test.SimpleTest.xml
 crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml
 *.xml
 crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml
+crawling/build/test-results/test/binary/output.bin
+crawling/build/reports/tests/test/index.html
+crawling/build/classes/java/test/org/zerock/test/SimpleTest.class
+crawling/.idea/crawling.iml

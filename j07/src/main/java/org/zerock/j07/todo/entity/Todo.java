@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Todo extends BaseEntity {  // BaseEntity를 상속
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //entity클래스를 설계할 때 반드시 @Id값이 있어야함
     private Long tno;  // idx
 
     @Column(nullable = false, length = 300)  //Not Null, 길이 300

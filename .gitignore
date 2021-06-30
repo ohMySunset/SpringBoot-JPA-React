@@ -12,3 +12,9 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml
+crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml
+crawling/build/test-results/test/TEST-org.zerock.test.SimpleTest.xml
+crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml
+*.xml
+crawling/build/test-results/test/TEST-org.zerock.test.SeleniumTest.xml

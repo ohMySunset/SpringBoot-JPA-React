@@ -79,5 +79,41 @@ public class TodoRepositoryTests {
 
     }
 
+    @Test
+    public void TestList1(){
+
+        String keyword = "15";
+
+        // 검색+페이징 -> 리턴타입 : Page , 파라미터 : Pageable
+        Pageable pageable = PageRequest.of(0, 10);
+
+        Page<Todo> result = todoRepository.getList(keyword, pageable);
+
+        log.info(result.getTotalElements()); // count는 long타입으로 반환됨
+
+        result.getContent().forEach(todo->{
+            log.info(todo);
+        });
+    }
+
+    @Test
+    public void testDoA(){
+        todoRepository.doA();
+    }
+
+    @Test
+    public void testListWithSearch(){
+        String keyword = "10";
+
+        Pageable pageable = PageRequest.of(0,10);
+
+        Page<Todo> result = todoRepository.listWithSearch(keyword, pageable);
+
+        log.info(result.getTotalElements());
+        result.getContent().forEach(todo -> {
+            log.info(todo);
+        });
+
+    }
 
 }

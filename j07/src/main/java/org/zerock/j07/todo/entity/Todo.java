@@ -28,4 +28,8 @@ public class Todo extends BaseEntity {  // BaseEntity를 상속
         this.content = content;
     }
 
+    public void changeDel(boolean del){
+        this.del = del;
+    }
+
 }

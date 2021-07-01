@@ -10,4 +10,6 @@ public interface ReplyRepository extends JpaRepository<Reply,Long> {
     // 게시글 기준으로 댓글을 페이징 처리하기 위한 메서드
     Page<Reply> getByBoard(Board board, Pageable pageable);
 
+
+
 }

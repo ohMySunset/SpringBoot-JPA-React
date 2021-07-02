@@ -2,13 +2,20 @@ package org.zerock.j07.todo.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.zerock.j07.common.dto.ListResponseDTO;
+import org.zerock.j07.common.dto.PageMaker;
 import org.zerock.j07.todo.dto.TodoDTO;
+import org.zerock.j07.common.dto.ListRequestDTO;
 import org.zerock.j07.todo.entity.Todo;
 import org.zerock.j07.todo.repository.TodoRepository;
 
-import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -70,6 +77,33 @@ public class TodoServiceImpl implements TodoService{
         }
 
         return null;
+    }
+
+    @Override
+    public ListResponseDTO<TodoDTO> list(ListRequestDTO dto) {
+
+        Pageable pageable = dto.getPageable();
+        Page<Todo> result = todoRepository.listWithSearch(dto.getKeyword(), pageable);
+
+        // Function<T,R> : 객체 T를 R로 매핑
+        Function<Todo, TodoDTO> fn = (todo)-> entityToDTO(todo);
+
+        List<TodoDTO> dtoList = result.getContent().stream()
+                                                    .map(fn)
+                                                    .collect(Collectors.toList());
+
+        PageMaker pageMaker = new PageMaker(dto.getPage(),dto.getSize(),(int)result.getTotalElements());
+
+        log.info(pageMaker);
+
+        ListResponseDTO<TodoDTO> listResult = ListResponseDTO.<TodoDTO>builder()
+                                                                .dtoList(dtoList)
+                                                                .pageMaker(pageMaker)
+                                                                .listRequestDTO(dto).build();
+
+        log.info(listResult);
+
+        return listResult;
     }
 
 

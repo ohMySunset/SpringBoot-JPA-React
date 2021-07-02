@@ -1,6 +1,8 @@
 package org.zerock.j07.todo.service;
 
+import org.zerock.j07.common.dto.ListResponseDTO;
 import org.zerock.j07.todo.dto.TodoDTO;
+import org.zerock.j07.common.dto.ListRequestDTO;
 import org.zerock.j07.todo.entity.Todo;
 
 public interface TodoService {
@@ -28,7 +30,10 @@ public interface TodoService {
                 .build();
     }
 
+    // 데이터 삭제
     Long remove(Long tno);
-
+    // 데이터 수정
     TodoDTO modify(TodoDTO dto);
+    // 리스트 반환타입으로 리스트 가져오기
+    ListResponseDTO<TodoDTO> list(ListRequestDTO dto);
 }

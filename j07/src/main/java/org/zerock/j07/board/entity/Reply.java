@@ -21,6 +21,7 @@ public class Reply extends BaseEntity {
 
     private String replyText;
 
+    @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY) // 객체 생성시 JPA 연관관계 설정  --> LAZY
     private Board board;
 

@@ -19,6 +19,4 @@ public class TodoDTO {
     private LocalDateTime redData;
     private LocalDateTime modData;
 
-
-
 }

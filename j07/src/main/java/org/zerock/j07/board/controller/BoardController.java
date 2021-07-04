@@ -19,6 +19,7 @@ public class BoardController {
 
     private final BoardService boardService;
 
+   
     @GetMapping("/list")
     public ResponseEntity<ListResponseDTO<ListBoardDTO>> list(BoardRequestDTO boardRequestDTO){
 

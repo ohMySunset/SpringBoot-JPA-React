@@ -28,27 +28,27 @@ public class BoardRepositoryTests {
     private FavoriteRepository favoriteRepository;
 
     @Test
-    public void testFavorite(){
-        IntStream.rangeClosed(1,500).forEach(i->{
+    public void testFavorite() {
+        IntStream.rangeClosed(1, 500).forEach(i -> {
 
-            long bno = (long) (Math.random()*200) + 1;
+            long bno = (long) (Math.random() * 200) + 1;
 
             Board board = Board.builder().dno(bno).build();
 
             Favorite favorite = Favorite.builder()
-                                        .board(board)
-                                        .mark(true)
-                                        .actor("user00")
-                                        .build();
+                    .board(board)
+                    .mark(true)
+                    .actor("user00")
+                    .build();
 
             favoriteRepository.save(favorite);
         });
     }
 
     @Test
-    public void insertDummits(){
+    public void insertDummits() {
 
-        IntStream.rangeClosed(1,100).forEach(i->{
+        IntStream.rangeClosed(1, 100).forEach(i -> {
 
             Board board = Board.builder()
                     .title("제목...")
@@ -63,17 +63,17 @@ public class BoardRepositoryTests {
     }
 
     @Test
-    public void testGet1(){
-        Pageable pageable = PageRequest.of(0,10);
+    public void testGet1() {
+        Pageable pageable = PageRequest.of(0, 10);
 
         Page<Object[]> result = boardRepository.getData1(pageable);
 
-        result.getContent().forEach(arr-> log.info(Arrays.toString(arr)));
+        result.getContent().forEach(arr -> log.info(Arrays.toString(arr)));
     }
 
     @Test
-    public void testSearch(){
-        Pageable pageable = PageRequest.of(0,10);
+    public void testSearch() {
+        Pageable pageable = PageRequest.of(0, 10);
 
         String type = "tcw";
         String keyword = "10";

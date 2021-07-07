@@ -10,10 +10,11 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.zerock.j08.store.entity.QProduct;
 import org.zerock.j08.store.entity.QStore;
 import org.zerock.j08.store.entity.Store;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StoreSearchImpl extends QuerydslRepositorySupport implements StoreSearch{
+public class StoreSearchImpl extends QuerydslRepositorySupport implements StoreSearch {
 
     public StoreSearchImpl() {
         super(Store.class);

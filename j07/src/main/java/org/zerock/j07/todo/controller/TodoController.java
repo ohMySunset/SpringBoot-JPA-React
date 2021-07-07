@@ -18,13 +18,13 @@ public class TodoController {
     private final TodoService todoService;
 
     @GetMapping("/list")
-    public ResponseEntity<ListResponseDTO<TodoDTO>> list(ListRequestDTO dto){
+    public ResponseEntity<ListResponseDTO<TodoDTO>> list(ListRequestDTO dto) {
 
         return ResponseEntity.ok(todoService.list(dto));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Long> register(@RequestBody TodoDTO dto){
+    public ResponseEntity<Long> register(@RequestBody TodoDTO dto) {
 
         log.info("register....." + dto);
 
@@ -36,7 +36,7 @@ public class TodoController {
 
 
     @GetMapping("/{tno}")
-    public ResponseEntity<TodoDTO> read(@PathVariable Long tno){
+    public ResponseEntity<TodoDTO> read(@PathVariable Long tno) {
 
         TodoDTO dto = todoService.read(tno);
 
@@ -44,7 +44,7 @@ public class TodoController {
     }
 
     @DeleteMapping("/{tno}")
-    public ResponseEntity<Long> remove(@PathVariable("tno") Long tno){
+    public ResponseEntity<Long> remove(@PathVariable("tno") Long tno) {
 
         Long deletedTno = todoService.remove(tno);
 
@@ -52,7 +52,7 @@ public class TodoController {
     }
 
     @PutMapping("/{tno}")
-    public ResponseEntity<TodoDTO> modify(@PathVariable Long tno, @RequestBody TodoDTO dto){
+    public ResponseEntity<TodoDTO> modify(@PathVariable Long tno, @RequestBody TodoDTO dto) {
 
         dto.setTno(tno); // tno값 일치시키기 위해
         log.info(dto);

@@ -19,7 +19,7 @@ public class FoodStoreController {
     private final FoodStoreService foodStoreService;
 
     @PostMapping("/")
-    public ResponseEntity<Long> register(@RequestBody FoodStoreDTO storeDTO){ //@RequestBody json타입으로 파라미터 수집
+    public ResponseEntity<Long> register(@RequestBody FoodStoreDTO storeDTO) { //@RequestBody json타입으로 파라미터 수집
 
         Long fno = foodStoreService.register(storeDTO);
 
@@ -28,7 +28,7 @@ public class FoodStoreController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<ListFoodStoreDTO>> getList(){
+    public ResponseEntity<List<ListFoodStoreDTO>> getList() {
 
         return ResponseEntity.ok(foodStoreService.getList());
     }

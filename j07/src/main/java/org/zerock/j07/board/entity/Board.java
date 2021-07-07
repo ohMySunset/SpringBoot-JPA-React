@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity // 테이블로 만들어줌
-@Table(name="tbl_board")  // 테이블 명
+@Table(name = "tbl_board")  // 테이블 명
 @Getter  // ReadOnly getter만 생성가능
 @Builder  // 다수의 필드를 가질 경우 생성자 대신 빌더를 사용
 @AllArgsConstructor  // 모든 필드값을 파라미터로 받는 생성자 생성

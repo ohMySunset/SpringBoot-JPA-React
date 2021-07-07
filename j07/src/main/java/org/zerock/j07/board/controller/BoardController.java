@@ -20,7 +20,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/list")
-    public ResponseEntity<ListResponseDTO<ListBoardDTO>> list(BoardRequestDTO boardRequestDTO){
+    public ResponseEntity<ListResponseDTO<ListBoardDTO>> list(BoardRequestDTO boardRequestDTO) {
 
         return ResponseEntity.ok(boardService.getList(boardRequestDTO));
     }

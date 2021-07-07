@@ -10,7 +10,7 @@ public interface BoardService {
 
     ListResponseDTO<ListBoardDTO> getList(BoardRequestDTO boardRequestDTO);
 
-    default BoardDTO entityToDTO(Board board){
+    default BoardDTO entityToDTO(Board board) {
 
         return BoardDTO.builder()
                 .dno(board.getDno())
@@ -22,11 +22,11 @@ public interface BoardService {
                 .build();
     }
 
-    default ListBoardDTO arrToDTO(Object[] arr){
+    default ListBoardDTO arrToDTO(Object[] arr) {
 
-        Board board = (Board)arr[0];
-        long replyCount = (long)arr[1];
-        long likeCount = (long)arr[2];
+        Board board = (Board) arr[0];
+        long replyCount = (long) arr[1];
+        long likeCount = (long) arr[2];
 
         return ListBoardDTO.builder()
                 .boardDTO(entityToDTO(board))

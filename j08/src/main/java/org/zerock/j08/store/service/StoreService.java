@@ -10,7 +10,7 @@ public interface StoreService {
 
     ListResponseDTO<ListStoreDTO> getList(RequestStoreDTO requestStoreDTO);
 
-    default Store dtoToEntity(StoreDTO dto){
+    default Store dtoToEntity(StoreDTO dto) {
 
         return Store.builder()
                 .id(dto.getId())
@@ -23,7 +23,7 @@ public interface StoreService {
 
     }
 
-    default StoreDTO entityToDTO(Store store){
+    default StoreDTO entityToDTO(Store store) {
         return StoreDTO.builder()
                 .id(store.getId())
                 .storeName(store.getStoreName())
@@ -34,7 +34,7 @@ public interface StoreService {
                 .build();
     }
 
-    default ListStoreDTO arrToDTO(Object[] arr){
+    default ListStoreDTO arrToDTO(Object[] arr) {
 
         Store store = (Store) arr[0];
         long productCount = (long) arr[1];

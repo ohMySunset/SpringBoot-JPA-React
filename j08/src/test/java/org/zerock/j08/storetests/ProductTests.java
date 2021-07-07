@@ -20,15 +20,15 @@ public class ProductTests {
     private ProductRepository productRepository;
 
     @Test
-    public void insertTest(){
+    public void insertTest() {
 
-        IntStream.rangeClosed(1,100).forEach(i-> {
+        IntStream.rangeClosed(1, 100).forEach(i -> {
 
-            long sno = (int) (Math.random()*200) + 1;
+            long sno = (int) (Math.random() * 200) + 1;
 
             Store store = Store.builder().id(sno).build();
 
-            Product product = Product.builder().productName("제품"+i).store(store).build();
+            Product product = Product.builder().productName("제품" + i).store(store).build();
 
             productRepository.save(product);
 

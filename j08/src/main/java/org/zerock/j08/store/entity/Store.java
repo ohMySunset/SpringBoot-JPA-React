@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="tbl_str")
+@Table(name = "tbl_str")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -33,7 +33,7 @@ public class Store extends BaseEntity {
 
     private boolean del;
 
-    public void changeName(String storeName){
+    public void changeName(String storeName) {
 
         this.storeName = storeName;
     }

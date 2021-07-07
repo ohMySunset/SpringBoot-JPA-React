@@ -6,7 +6,7 @@ import org.zerock.j07.common.entity.BaseEntity;
 import javax.persistence.*;
 
 @Entity // 테이블로 만들어줌
-@Table(name="tbl_todo")  // 테이블 명
+@Table(name = "tbl_todo")  // 테이블 명
 @Getter  // ReadOnly getter만 생성가능
 @Builder
 @AllArgsConstructor
@@ -24,11 +24,11 @@ public class Todo extends BaseEntity {  // BaseEntity를 상속
     private boolean del; // 삭제여부
 
     // Setter의 역할
-    public void changeTitle(String content){
+    public void changeTitle(String content) {
         this.content = content;
     }
 
-    public void changeDel(boolean del){
+    public void changeDel(boolean del) {
         this.del = del;
     }
 

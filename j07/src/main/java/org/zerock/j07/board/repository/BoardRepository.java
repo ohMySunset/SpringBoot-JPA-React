@@ -18,5 +18,4 @@ public interface BoardRepository extends JpaRepository<Board, Long>, BoardSearch
     Page<Object[]> getData1(Pageable pageable);
 
 
-
 }

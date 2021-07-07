@@ -17,11 +17,12 @@ public interface FoodStoreService {
 
     /**
      * DTO -> Entity으로 변환
+     *
      * @param storeDTO
      * @return FoodStore
      */
 
-    default FoodStore dtoToEntity(FoodStoreDTO storeDTO){
+    default FoodStore dtoToEntity(FoodStoreDTO storeDTO) {
         Set<FoodStoreImage> imageSet = storeDTO.getImageList().stream()
                 .map(imageDto -> FoodStoreImage.builder()
                         .uuid(imageDto.getUuid())
@@ -33,13 +34,13 @@ public interface FoodStoreService {
         return FoodStore.builder().fno(storeDTO.getFno()).fname(storeDTO.getFname()).storeImages(imageSet).build();
     }
 
-    default ListFoodStoreDTO arrToDTO(Object[] arr){
+    default ListFoodStoreDTO arrToDTO(Object[] arr) {
 
         return ListFoodStoreDTO.builder()
-                .fno((Long)arr[0])
-                .fname((String)arr[1])
-                .uuid((String)arr[2])
-                .fileName((String)arr[3])
+                .fno((Long) arr[0])
+                .fname((String) arr[1])
+                .uuid((String) arr[2])
+                .fileName((String) arr[3])
                 .build();
 
     }

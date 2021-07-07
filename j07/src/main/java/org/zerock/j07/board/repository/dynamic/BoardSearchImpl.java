@@ -38,20 +38,20 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         query.leftJoin(favorite).on(favorite.board.eq(board));
 
         //Tuple : 원하는 값만 뽑아내는것.
-        JPQLQuery<Tuple> tuple = query.select(board,reply.countDistinct(),favorite.countDistinct());
+        JPQLQuery<Tuple> tuple = query.select(board, reply.countDistinct(), favorite.countDistinct());
 
         // 검색조건 예외처리
-        if(keyword != null && type != null){
+        if (keyword != null && type != null) {
             BooleanBuilder condition = new BooleanBuilder();
 
             String[] arrType = type.split("");
 
-            for(String i : arrType){
-                if(type.equals("t")){
+            for (String i : arrType) {
+                if (type.equals("t")) {
                     condition.or(board.title.contains(keyword));
-                }else if(type.equals("w")){
+                } else if (type.equals("w")) {
                     condition.or(board.content.contains(keyword));
-                }else if(type.equals("c")){
+                } else if (type.equals("c")) {
                     condition.or(board.writer.contains(keyword));
                 }
             }// end for

@@ -15,7 +15,7 @@ import java.util.List;
 
 // 인터페이스를 상속하는 클래스의 이름뒤에 Impl 꼭 붙여주어야함.
 @Log4j2
-public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSearch{
+public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSearch {
 
 
     public TodoSearchImpl() {
@@ -51,7 +51,7 @@ public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSea
         long count = query.fetchCount();
 
         log.warn("===============");
-        log.info("Count :"+ count);
+        log.info("Count :" + count);
         log.warn(result);
         return null;
     }
@@ -65,7 +65,7 @@ public class TodoSearchImpl extends QuerydslRepositorySupport implements TodoSea
 
         JPQLQuery<Todo> query = from(todo);
 
-        if(keyword != null && keyword.trim().length() != 0){
+        if (keyword != null && keyword.trim().length() != 0) {
             query.where(todo.content.contains(keyword));
         }
 

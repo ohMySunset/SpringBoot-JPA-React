@@ -24,17 +24,17 @@ public class ListRequestDTO {
     // 파라미터로 들어오는 page, size 값이 음수일 경우 디폴트값으로 정의
     public void setPage(int page) {
 
-        this.page = page>0? page:1;
+        this.page = page > 0 ? page : 1;
     }
 
     public void setSize(int size) {
 
-        this.size = size<10? size:10;
+        this.size = size < 10 ? size : 10;
     }
 
     @JsonIgnore
     public Pageable getPageable() {
 
-        return PageRequest.of(this.page-1, this.size);
+        return PageRequest.of(this.page - 1, this.size);
     }
 }

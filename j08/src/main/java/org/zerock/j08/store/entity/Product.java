@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="tbl_product")
+@Table(name = "tbl_product")
 @ToString(exclude = "store")
 @Getter
 public class Product extends BaseEntity {

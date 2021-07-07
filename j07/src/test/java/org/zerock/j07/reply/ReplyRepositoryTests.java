@@ -26,11 +26,11 @@ public class ReplyRepositoryTests {
     private ReplyRepository replyRepository;
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         // 게시글에 댓글을 달기 위해 게시글 객체 가져오기
-        IntStream.rangeClosed(1,1000).forEach(i->{
+        IntStream.rangeClosed(1, 1000).forEach(i -> {
 
-            long bno = (int)(Math.random()*200) +1;
+            long bno = (int) (Math.random() * 200) + 1;
             Board board = Board.builder().dno(bno).build();
 
             Reply reply = Reply.builder().replyText("Hi Hello..").board(board).build();
@@ -40,7 +40,7 @@ public class ReplyRepositoryTests {
     }
 
     @Test
-    public void testRead(){
+    public void testRead() {
         // 1번 댓글
         Optional<Reply> result = replyRepository.findById(1L);
         // join문이 자동으로 생성되어 board까지 불러옴.  --> eager로딩(DEFAULT)  <-> 필요한 순간까지 미루다가 필요한 데이터만 가져오는 것 : Lazy
@@ -55,8 +55,8 @@ public class ReplyRepositoryTests {
     }
 
     @Test
-    public void testPaging(){
-        Pageable pageable = PageRequest.of(0,10, Sort.by("rno").descending());
+    public void testPaging() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("rno").descending());
         Page<Reply> result = replyRepository.findAll(pageable);
 
         log.info(result);
@@ -74,10 +74,10 @@ public class ReplyRepositoryTests {
     }
 
     @Test
-    public void testByBoard(){
+    public void testByBoard() {
         // 게시글에서 dno를 기준으로 조회해서 페이징 처리 ---> 댓글 페이징의 경우 index 사용을 고려해야한다.
         Board board = Board.builder().dno(187L).build();
-        Pageable pageable = PageRequest.of(0,10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         replyRepository.getByBoard(board, pageable);
     }

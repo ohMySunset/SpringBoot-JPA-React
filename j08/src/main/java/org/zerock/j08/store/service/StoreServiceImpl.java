@@ -29,15 +29,15 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public ListResponseDTO<ListStoreDTO> getList(RequestStoreDTO requestStoreDTO) {
 
-        Pageable pageable = PageRequest.of(0,10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         Page<Object[]> result = storeRepository.getSearchList(requestStoreDTO.getKeyword(), requestStoreDTO.getType(), requestStoreDTO.getPageable());
 
-       // result.getContent().forEach(arr->log.info(Arrays.toString(arr)));
+        // result.getContent().forEach(arr->log.info(Arrays.toString(arr)));
 
-        List<ListStoreDTO> dtoList = result.getContent().stream().map(arr-> arrToDTO(arr)).collect(Collectors.toList());
+        List<ListStoreDTO> dtoList = result.getContent().stream().map(arr -> arrToDTO(arr)).collect(Collectors.toList());
 
-        PageMaker pageMaker = new PageMaker(requestStoreDTO.getPage(), requestStoreDTO.getSize(), (int)result.getTotalElements());
+        PageMaker pageMaker = new PageMaker(requestStoreDTO.getPage(), requestStoreDTO.getSize(), (int) result.getTotalElements());
 
         return ListResponseDTO.<ListStoreDTO>builder().listRequestDTO(requestStoreDTO).dtoList(dtoList).pageMaker(pageMaker).build();
 

@@ -27,7 +27,7 @@ public class FoodStore {
     private Set<FoodStoreImage> storeImages = new HashSet<>();
 
 
-    public void addImage(FoodStoreImage storeImage){
+    public void addImage(FoodStoreImage storeImage) {
         storeImages.add(storeImage);
     }
 

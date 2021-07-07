@@ -23,15 +23,15 @@ public class ListRequestDTO {
     private String keyword;
 
     public int getPage() {
-        return page>0? page:1 ;
+        return page > 0 ? page : 1;
     }
 
     public int getSize() {
-        return size<10? size: 10;
+        return size < 10 ? size : 10;
     }
 
     @JsonIgnore
-    public Pageable getPageable(){
-        return PageRequest.of(page-1, size);
+    public Pageable getPageable() {
+        return PageRequest.of(page - 1, size);
     }
 }

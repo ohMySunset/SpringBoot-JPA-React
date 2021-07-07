@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 import org.zerock.j07.todo.entity.Todo;
 import org.zerock.j07.todo.repository.TodoRepository;
+
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -21,15 +22,16 @@ public class TodoRepositoryTests {
 
     @Autowired
     private TodoRepository todoRepository;
+
     @Test
-    public void test1(){
+    public void test1() {
         log.info(todoRepository.getClass().getName());
 
     }
 
     @Test
-    public void testInsert(){
-        IntStream.rangeClosed(1,300).forEach(i -> {
+    public void testInsert() {
+        IntStream.rangeClosed(1, 300).forEach(i -> {
             Todo todo = Todo.builder().content("내용...." + i).build();
             todoRepository.save(todo);
 
@@ -37,7 +39,7 @@ public class TodoRepositoryTests {
     }
 
     @Test
-    public void testSelect(){
+    public void testSelect() {
         // Select 처리
         // Optional<T> : T타입의 객체를 포장해주는 래퍼클래스
         Optional<Todo> result = todoRepository.findById(1L);
@@ -48,7 +50,7 @@ public class TodoRepositoryTests {
     }
 
     @Test
-    public void testPaging(){
+    public void testPaging() {
         // 페이징 처리
         Pageable pageable = PageRequest.of(0, 10, Sort.by("tno").descending());
         // finaAll() - Pageable타입
@@ -56,12 +58,12 @@ public class TodoRepositoryTests {
 
         log.info(result);
 
-        result.getContent().forEach(todo -> log.info("페이징 : "+todo));
+        result.getContent().forEach(todo -> log.info("페이징 : " + todo));
 
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         // Update 처리
         Optional<Todo> result = todoRepository.findById(300L);
 
@@ -73,14 +75,14 @@ public class TodoRepositoryTests {
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         // Delete 처리
         todoRepository.delete(Todo.builder().tno(300L).build());
 
     }
 
     @Test
-    public void TestList1(){
+    public void TestList1() {
 
         String keyword = "15";
 
@@ -91,21 +93,21 @@ public class TodoRepositoryTests {
 
         log.info(result.getTotalElements()); // count는 long타입으로 반환됨
 
-        result.getContent().forEach(todo->{
+        result.getContent().forEach(todo -> {
             log.info(todo);
         });
     }
 
     @Test
-    public void testDoA(){
+    public void testDoA() {
         todoRepository.doA();
     }
 
     @Test
-    public void testListWithSearch(){
+    public void testListWithSearch() {
         String keyword = "10";
 
-        Pageable pageable = PageRequest.of(0,10);
+        Pageable pageable = PageRequest.of(0, 10);
 
         Page<Todo> result = todoRepository.listWithSearch(keyword, pageable);
 

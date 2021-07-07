@@ -20,11 +20,11 @@ public class ListFoodStoreDTO {
 
     private String fileName;
 
-    public String getLink(){
-        return uuid+"_"+fileName;
+    public String getLink() {
+        return uuid + "_" + fileName;
     }
 
-    public String getThumb(){
-        return "s_"+uuid+"_"+fileName;
+    public String getThumb() {
+        return "s_" + uuid + "_" + fileName;
     }
 }

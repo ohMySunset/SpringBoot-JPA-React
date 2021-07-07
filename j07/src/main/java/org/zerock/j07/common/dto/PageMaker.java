@@ -16,27 +16,25 @@ public class PageMaker {
     private boolean prev, next;
 
 
-    public PageMaker(int page, int size, int totalCount){
+    public PageMaker(int page, int size, int totalCount) {
         this.page = page;
         this.size = size;
         this.totalCount = totalCount;
 
-        int totalPage = (int)(Math.ceil(totalCount/(double)size));
+        int totalPage = (int) (Math.ceil(totalCount / (double) size));
         //temp end page
-        int tempEnd = (int)(Math.ceil(page/10.0)) * 10;
+        int tempEnd = (int) (Math.ceil(page / 10.0)) * 10;
 
         int start = tempEnd - 19;
 
         prev = start > 1;
 
-        int end = totalPage > tempEnd ? tempEnd: totalPage;
+        int end = totalPage > tempEnd ? tempEnd : totalPage;
 
         next = totalPage > tempEnd;
 
         pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());
     }
-
-
 
 
 }

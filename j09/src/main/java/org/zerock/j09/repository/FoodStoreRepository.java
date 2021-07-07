@@ -13,7 +13,7 @@ public interface FoodStoreRepository extends JpaRepository<FoodStore, Long> {
     //@OneToMany관계에서는 엔티티마다 Repository를 생성하지 않고 하나로 관리한다.
 
     //attributePaths -> 변수명
-    @EntityGraph(attributePaths = "foodMenus",type = EntityGraph.EntityGraphType.FETCH)
+    @EntityGraph(attributePaths = "foodMenus", type = EntityGraph.EntityGraphType.FETCH)
     @Query("select s from FoodStore s where s.fno = :sno")
     FoodStore getById(Long sno);
 

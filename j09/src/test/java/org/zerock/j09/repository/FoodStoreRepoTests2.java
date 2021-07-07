@@ -18,19 +18,14 @@ public class FoodStoreRepoTests2 {
     private FoodStoreRepository foodStoreRepository;
 
     @Test
-    public void testList(){
-        Pageable pageable = PageRequest.of(0,10, Sort.by("fno").descending());
+    public void testList() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("fno").descending());
 
         Page<Object[]> result = foodStoreRepository.getList(pageable);
 
-        result.getContent().forEach(arr-> System.out.println(Arrays.toString(arr)));
+        result.getContent().forEach(arr -> System.out.println(Arrays.toString(arr)));
 
     }
-
-
-
-
-
 
 
 }

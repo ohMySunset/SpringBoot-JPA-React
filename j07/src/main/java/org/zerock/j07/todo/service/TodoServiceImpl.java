@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor // TodoRepository 알아서 주입해줌
-public class TodoServiceImpl implements TodoService{
+public class TodoServiceImpl implements TodoService {
 
     private final TodoRepository todoRepository;
 
@@ -45,7 +45,7 @@ public class TodoServiceImpl implements TodoService{
 
         log.info(result);
 
-        if(result.isPresent()){
+        if (result.isPresent()) {
             Todo todo = result.get();
             return entityToDTO(todo);
         }
@@ -65,7 +65,7 @@ public class TodoServiceImpl implements TodoService{
 
         Optional<Todo> result = todoRepository.findById(dto.getTno());
 
-        if(result.isPresent()){
+        if (result.isPresent()) {
 
             Todo entity = result.get();
             entity.changeTitle(dto.getContent());
@@ -86,20 +86,20 @@ public class TodoServiceImpl implements TodoService{
         Page<Todo> result = todoRepository.listWithSearch(dto.getKeyword(), pageable);
 
         // Function<T,R> : 객체 T를 R로 매핑
-        Function<Todo, TodoDTO> fn = (todo)-> entityToDTO(todo);
+        Function<Todo, TodoDTO> fn = (todo) -> entityToDTO(todo);
 
         List<TodoDTO> dtoList = result.getContent().stream()
-                                                    .map(fn)
-                                                    .collect(Collectors.toList());
+                .map(fn)
+                .collect(Collectors.toList());
 
-        PageMaker pageMaker = new PageMaker(dto.getPage(),dto.getSize(),(int)result.getTotalElements());
+        PageMaker pageMaker = new PageMaker(dto.getPage(), dto.getSize(), (int) result.getTotalElements());
 
         log.info(pageMaker);
 
         ListResponseDTO<TodoDTO> listResult = ListResponseDTO.<TodoDTO>builder()
-                                                                .dtoList(dtoList)
-                                                                .pageMaker(pageMaker)
-                                                                .listRequestDTO(dto).build();
+                .dtoList(dtoList)
+                .pageMaker(pageMaker)
+                .listRequestDTO(dto).build();
 
         log.info(listResult);
 

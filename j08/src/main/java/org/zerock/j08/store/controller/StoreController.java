@@ -20,8 +20,8 @@ public class StoreController {
     private final StoreService storeService;
 
     @GetMapping("/list")
-    public ResponseEntity<ListResponseDTO<ListStoreDTO>> getList(RequestStoreDTO requestStoreDTO){
+    public ResponseEntity<ListResponseDTO<ListStoreDTO>> getList(RequestStoreDTO requestStoreDTO) {
 
-        return  ResponseEntity.ok(storeService.getList(requestStoreDTO));
+        return ResponseEntity.ok(storeService.getList(requestStoreDTO));
     }
 }

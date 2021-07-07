@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
 
@@ -32,8 +32,8 @@ public class BoardServiceImpl implements BoardService{
         Page<Object[]> result = boardRepository.getSearchList(boardRequestDTO.getType(), boardRequestDTO.getKeyword(), pageable);
 
         List<ListBoardDTO> dtoList = result.getContent()
-                                            .stream().map(list-> arrToDTO(list))
-                                            .collect(Collectors.toList());
+                .stream().map(list -> arrToDTO(list))
+                .collect(Collectors.toList());
 
         PageMaker pageMaker = new PageMaker(boardRequestDTO.getPage(), boardRequestDTO.getSize(), (int) result.getTotalElements());
 

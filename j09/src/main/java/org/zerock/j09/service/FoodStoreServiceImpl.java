@@ -35,11 +35,11 @@ public class FoodStoreServiceImpl implements FoodStoreService {
     @Override
     public List<ListFoodStoreDTO> getList() {
 
-        Pageable pageable = PageRequest.of(0,10, Sort.by("fno").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("fno").descending());
 
         Page<Object[]> result = storeRepository.getList(pageable);
 
-        return result.getContent().stream().map(arr-> arrToDTO(arr)).collect(Collectors.toList());
+        return result.getContent().stream().map(arr -> arrToDTO(arr)).collect(Collectors.toList());
     }
 
 }

@@ -18,7 +18,7 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-     // 401에러 : 이 요청은 인증이 필요하다. 실제 뜻은 인증안됨에 가까움.
+        // 401에러 : 이 요청은 인증이 필요하다. 실제 뜻은 인증안됨에 가까움.
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);

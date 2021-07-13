@@ -28,7 +28,7 @@ public class Member {
     @Builder.Default
     private Set<MemberRole> memberRoleSet = new HashSet<>();
 
-    public void addMemberRole(MemberRole role){
+    public void addMemberRole(MemberRole role) {
         memberRoleSet.add(role);
     }
 

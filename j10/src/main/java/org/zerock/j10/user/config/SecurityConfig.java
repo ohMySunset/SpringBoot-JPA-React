@@ -22,38 +22,41 @@ import org.zerock.j10.user.security.filter.handler.LoginFailHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     {
-     log.info("SecurityConfig...................");
-     log.info("SecurityConfig...................");
-     log.info("SecurityConfig...................");
+        log.info("SecurityConfig...................");
+        log.info("SecurityConfig...................");
+        log.info("SecurityConfig...................");
 
     }
 
     /**
      * Bcrypt 암호화처리 : 복호화 불가능
+     *
      * @return new BCryptPasswordEncoder()
      */
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
 
-        return  new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 
     /**
      * 403 접근에러 처리
+     *
      * @return CustomAccessDeniedHandler()
      */
     @Bean
-    public AccessDeniedHandler accessDeniedHandler(){
+    public AccessDeniedHandler accessDeniedHandler() {
 
         return new CustomAccessDeniedHandler();
     }
 
     /**
      * api uri 경로에 따른 접근제어 처리
+     *
      * @return ApiCheckFilter()
      */
     @Bean
-    public ApiCheckFilter apiCheckFilter(){
+    public ApiCheckFilter apiCheckFilter() {
         return new ApiCheckFilter("/api/board/**/*");
     }
 
@@ -78,14 +81,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.formLogin();
 //        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 
-          // 세션 생성 막기
-          http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-          // security에 필터 추가
-          http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
-          http.addFilterBefore(apiLoginFilter(), UsernamePasswordAuthenticationFilter.class);
+        // 세션 생성 막기
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // security에 필터 추가
+        http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(apiLoginFilter(), UsernamePasswordAuthenticationFilter.class);
 
 
-          http.csrf().disable();
+        http.csrf().disable();
 
     }
 

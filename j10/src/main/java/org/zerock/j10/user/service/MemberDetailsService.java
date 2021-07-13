@@ -26,17 +26,17 @@ public class MemberDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         log.info("=============================");
-        log.info("username"+ username);
+        log.info("username" + username);
 
         Optional<Member> op = memberRepository.findByEmail(username);
 
-        if(op.isPresent()){
+        if (op.isPresent()) {
             Member member = op.get();
 
             UserDetails result = new MemberDTO(username,
                     member.getMpw(),
                     member.getMemberRoleSet().stream()
-                            .map(role-> new SimpleGrantedAuthority("ROLE_"+role.name())).collect(Collectors.toList()));
+                            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name())).collect(Collectors.toList()));
 
             return result;
         }

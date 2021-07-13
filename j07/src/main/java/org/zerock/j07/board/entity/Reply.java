@@ -1,7 +1,6 @@
 package org.zerock.j07.board.entity;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
 import org.zerock.j07.common.entity.BaseEntity;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "board")  // 연관관계가 맺어져 있는 board는 제외하고 출력하도록한다.
-public class Reply extends BaseEntity {
+public class Reply extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

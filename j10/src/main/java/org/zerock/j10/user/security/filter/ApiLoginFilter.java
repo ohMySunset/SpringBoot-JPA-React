@@ -40,7 +40,7 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
         String email = request.getParameter("email");
         String pw = request.getParameter("pw");
 
-        log.info("email: "+ email+ "pw: "+ pw);
+        log.info("email: " + email + "pw: " + pw);
 
         // 인가 토큰 생성
         UsernamePasswordAuthenticationToken authenticationToken =
@@ -69,7 +69,7 @@ public class ApiLoginFilter extends AbstractAuthenticationProcessingFilter {
 
         Map<String, Object> map = new HashMap<>();
 
-        String email = ((MemberDTO)principal).getUsername();
+        String email = ((MemberDTO) principal).getUsername();
 
         try {
             String jwt = new JWTUtil().generateToken(email);

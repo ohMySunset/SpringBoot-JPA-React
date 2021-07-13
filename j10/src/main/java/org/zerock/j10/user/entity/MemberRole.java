@@ -5,6 +5,4 @@ public enum MemberRole {
     USER, MEMBER, ADMIN;
 
 
-
-
 }

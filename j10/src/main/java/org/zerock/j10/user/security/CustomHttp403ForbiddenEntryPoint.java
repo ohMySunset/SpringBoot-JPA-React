@@ -21,7 +21,6 @@ public class CustomHttp403ForbiddenEntryPoint implements AuthenticationEntryPoin
         log.error(authException.getMessage());
 
 
-
         log.error(request.getRequestURI());
         log.error("403");
         log.error("403");

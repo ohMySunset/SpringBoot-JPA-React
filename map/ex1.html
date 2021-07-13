@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:350px;"></div>
+<div id="result"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6cd0c3e5f48f6d6b1c725a002fc8b016"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(37.570566870405585, 126.98524520083875), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+    kakao.maps.event.addListener(map, 'dragend', function() {
+
+        // 지도의  레벨을 얻어옵니다
+        var level = map.getLevel();
+
+        // 지도의 중심좌표를 얻어옵니다
+        var latlng = map.getCenter();
+
+        var message = '<p>지도 레벨은 ' + level + ' 이고</p>';
+        message += '<p>중심 좌표는 위도 ' + latlng.getLat() + ', 경도 ' + latlng.getLng() + '입니다</p>';
+
+        var resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = message;
+    })
+</script>
+<script>
+
+    const stores = [
+
+        {name : "스타벅스 주얼리시티점", lat:37.57137847049122, lng:126.99828740000382, cat:"일반"},
+        {name : "스타벅스 서울극장점", lat:37.57001595609778, lng:126.99167392893233, cat:"일반"},
+        {name : "스타벅스 종로3가점", lat:37.57081262602884, lng:126.99025398467536, cat:"일반"},
+        {name : "스타벅스 더종로 R점", lat:37.571135816822846, lng:126.98370015790415, cat:"리저브"},
+        {name: "스타벅스 광화문 R점", lat:37.57150997614141, lng:126.97644746487727, cat:"리저브"}
+    ]
+
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    const positions = stores.map(store=>
+        ({title:store.name, latlng: new kakao.maps.LatLng(store.lat, store.lng)
+        }))
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+    for (var i = 0; i < positions.length; i ++) {
+
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        const marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        });
+
+        // 마커에 필요한 데이터 추가해서 붙여 쓸 수 있음.
+        marker.origin = stores[i]
+
+        // 마커에 클릭이벤트를 등록합니다
+        // 클로저 형태로 설계되어 있기 때문에 for루프 돌고 마지막 데이터만 marker로 나오게됨
+        // -> 가장 쉬운 해결방법은 참조하고 있는 함수를 const로 바꾸어 주는 것.
+        kakao.maps.event.addListener(marker, 'click', function() {
+            // 마커 위에 인포윈도우를 표시합니다
+            console.log(marker)
+            console.log(marker.origin)
+        });
+    }
+</script>
+</body>
+</html>
+
+</body>
+</html>

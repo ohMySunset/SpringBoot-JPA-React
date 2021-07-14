@@ -21,7 +21,7 @@ const StoreMap = () => {
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
         const map = new kakao.maps.Map(mapContainer, mapOption);
         showMarkers(map)
-가    }, []) // 빈 배열은 컴포넌트가 로딩됐을 때 한번만 실행함.
+    }, []) // 빈 배열은 컴포넌트가 로딩됐을 때 한번만 실행함.
 
     const showMarkers = (map) =>{
         const stores = storeService.getStores();

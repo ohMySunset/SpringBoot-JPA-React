@@ -1,17 +1,37 @@
 import './App.css';
-import Counter1 from "./components/count1/Counter1";
-import Cafe from "./components/practice01/Cafe";
-import Counter2 from "./components/count1/Counter2";
-import StoreBoard from "./components/startbuck/StoreBoard";
+import MovieList from "./components/movies/MovieList";
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import TodoBoard from "./components/todo1/TodoBoard";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
 
 function App() {
-  return (
-     // 컴포넌트는 하나의 div 안에 위치
-    <div className="App">
-        <StoreBoard/>
-    </div>
-  );
-}
+
+    const classes = useStyles();
+
+    return(
+        <div className="App">
+            <Grid className={classes.root}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <h1 className={classes.paper}>현재 상영작</h1>
+                    </Grid>
+                        <MovieList></MovieList>
+                </Grid>
+            </Grid>
+        </div>
+    );
+};
 
 export default App;
